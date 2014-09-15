@@ -127,8 +127,11 @@ namespace VäxelPengar_A
                 //Console.WriteLine("5-kronor: {0, 5}", ((((((växelTillbaka % 500) % 100) % 50) % 20) % 10) / 5));
                 //Console.WriteLine("1-kronor: {0, 5}\n", (((((((växelTillbaka % 500) % 100) % 50) % 20) % 10) % 5) / 1));
            
-            // Håller fönstret uppe när det är färdigt.
-            System.Environment.Exit(0);
+            // Avslutar samt håller fönstret uppe när det är färdigt.
+            Console.WriteLine("----------------------------------\n");
+            Console.WriteLine("Tack för ditt köp, välkommen åter!");
+            Console.WriteLine("Tryck på Retur för att avsluta.");
+            Console.ReadLine();
 
         }
     }
