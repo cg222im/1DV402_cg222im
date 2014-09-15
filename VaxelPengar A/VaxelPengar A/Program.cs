@@ -126,6 +126,9 @@ namespace VäxelPengar_A
                 //Console.WriteLine("10-kronor: {0, 5}", (((((växelTillbaka % 500) % 100) % 50) % 20) / 10));
                 //Console.WriteLine("5-kronor: {0, 5}", ((((((växelTillbaka % 500) % 100) % 50) % 20) % 10) / 5));
                 //Console.WriteLine("1-kronor: {0, 5}\n", (((((((växelTillbaka % 500) % 100) % 50) % 20) % 10) % 5) / 1));
+           
+            // Håller fönstret uppe när det är färdigt.
+            System.Environment.Exit(0);
 
         }
     }
