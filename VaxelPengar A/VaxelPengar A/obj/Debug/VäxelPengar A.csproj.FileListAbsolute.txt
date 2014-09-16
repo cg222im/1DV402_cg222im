@@ -10,3 +10,9 @@ C:\Users\DoFe\Visual Studio projects\1DV402\VaxelPengar - 1\1dv402_cg222im\Vaxel
 C:\Users\DoFe\Visual Studio projects\1DV402\VaxelPengar - 1\1dv402_cg222im\VaxelPengar A\VaxelPengar A\obj\Debug\VäxelPengar A.csprojResolveAssemblyReference.cache
 C:\Users\DoFe\Visual Studio projects\1DV402\VaxelPengar - 1\1dv402_cg222im\VaxelPengar A\VaxelPengar A\bin\Debug\VäxelPengar A.exe
 C:\Users\DoFe\Visual Studio projects\1DV402\VaxelPengar - 1\1dv402_cg222im\VaxelPengar A\VaxelPengar A\bin\Debug\VäxelPengar A.pdb
+C:\Users\DoFe\Visual Studio projects\1DV402\Kursrepo\1dv402_cg222im\VaxelPengar A\VaxelPengar A\bin\Debug\VäxelPengar A.exe.config
+C:\Users\DoFe\Visual Studio projects\1DV402\Kursrepo\1dv402_cg222im\VaxelPengar A\VaxelPengar A\obj\Debug\VäxelPengar A.exe
+C:\Users\DoFe\Visual Studio projects\1DV402\Kursrepo\1dv402_cg222im\VaxelPengar A\VaxelPengar A\obj\Debug\VäxelPengar A.pdb
+C:\Users\DoFe\Visual Studio projects\1DV402\Kursrepo\1dv402_cg222im\VaxelPengar A\VaxelPengar A\bin\Debug\VäxelPengar A.exe
+C:\Users\DoFe\Visual Studio projects\1DV402\Kursrepo\1dv402_cg222im\VaxelPengar A\VaxelPengar A\bin\Debug\VäxelPengar A.pdb
+C:\Users\DoFe\Visual Studio projects\1DV402\Kursrepo\1dv402_cg222im\VaxelPengar A\VaxelPengar A\obj\Debug\VäxelPengar A.csprojResolveAssemblyReference.cache

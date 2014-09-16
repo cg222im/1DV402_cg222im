@@ -30,10 +30,12 @@ namespace VäxelPengar_A
                     // Felhantering av för litet/negativt belopp. Endast en loop?
                     if (totalSumma <= 0)
                     {
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\nIngenting är gratis! \n");
+                        Console.BackgroundColor = ConsoleColor.Black;
                         Console.WriteLine("Ange belopp att betala : ");
                         totalSumma = double.Parse(Console.ReadLine());
-
                     }
 
                     // Input, erhållet belopp i heltal.
@@ -43,7 +45,10 @@ namespace VäxelPengar_A
                     // Felhantering av för lite/negativa kontanter.
                     if (erhålletBelopp <= 0)
                     {
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\nFör lite kontanter, snåljop! \n");
+                        Console.BackgroundColor = ConsoleColor.Black;
                         Console.WriteLine("Totalbelopp : {0}", totalSumma);
                         Console.Write("Ange erhållna kontanter : ");
                         erhålletBelopp = int.Parse(Console.ReadLine());
@@ -55,11 +60,17 @@ namespace VäxelPengar_A
                 }
                 catch (FormatException)
                 {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Fel format! Ange siffror samt , istället för . \n");
+                    Console.BackgroundColor = ConsoleColor.Black;
                 }
                 catch
                 {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Ett oväntat fel har inträffat! \n");
+                    Console.BackgroundColor = ConsoleColor.Black;
                 }
                
             }
@@ -129,7 +140,7 @@ namespace VäxelPengar_A
            
             // Avslutar samt håller fönstret uppe när det är färdigt.
             Console.WriteLine("----------------------------------\n");
-            Console.WriteLine("Tack för ditt köp, välkommen åter!");
+            Console.WriteLine("Tack för ditt köp, välkommen åter!\n");
             Console.WriteLine("Tryck på Retur för att avsluta.");
             Console.ReadLine();
 
