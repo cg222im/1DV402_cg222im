@@ -53,6 +53,19 @@ namespace VäxelPengar_A
                         erhålletBelopp = int.Parse(Console.ReadLine());
                     }
 
+                    // Öresavrundning
+                    avrundadSumma = (int)Math.Round(totalSumma);
+                    öresAvrundning = avrundadSumma - (double)totalSumma;
+
+                    // Felhantering för lite kontanter
+                    if ((avrundadSumma - erhålletBelopp) > 0)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("\nErhållet belopp är för litet. Köpet kunde inte genomföras.");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        System.Environment.Exit(0);
+                    }
 
                     // Felhantering 
                     break;
@@ -74,20 +87,21 @@ namespace VäxelPengar_A
 
             }
 
+
+
             // "Grafiskt" ramverk för kvitto.
             Console.WriteLine("\nKVITTO");
             Console.WriteLine("----------------------------------");
 
             // Totalsumma avrundas till närmaste hela krontal.
-            Console.WriteLine("Totalt : {0, 24:c2}.", totalSumma);
+            Console.WriteLine("{0, -15}:{1, 17:c2}.", "Totalt", totalSumma);
 
             // Öresavrundning.
-            avrundadSumma = (int)Math.Round(totalSumma);
-            öresAvrundning = avrundadSumma - (double)totalSumma;
+       
             Console.WriteLine("Öresavrundning : {0, 16:c2}.", öresAvrundning);
 
             // Totalbelopp skrivs ut
-            Console.WriteLine("Att betala : {0, 20:c2}.", avrundadSumma);
+            Console.WriteLine("Att betala :     {0, 16:c2}.", avrundadSumma);
 
             // Felhantering av för liten summa.
             if (avrundadSumma < 1)
@@ -96,7 +110,7 @@ namespace VäxelPengar_A
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Totalsumman är för liten. Köpet kunde inte genomföras.");
                 Console.BackgroundColor = ConsoleColor.Black;
-                System.Environment.Exit(0);
+                return;
             }
 
             // Kontanter
@@ -107,57 +121,42 @@ namespace VäxelPengar_A
             Console.WriteLine("\nDin växel tillbaka är: {0, 10:c0}.", växelTillbaka);
 
             // Felhantering av först stort belopp.
-            if ((avrundadSumma - erhålletBelopp) > 0)
-            {
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("\nErhållet belopp är för litet. Köpet kunde inte genomföras.");
-                Console.BackgroundColor = ConsoleColor.Black;
-                System.Environment.Exit(0);
-            }
+         
 
             // Kvittot "stängs"
-            Console.WriteLine("----------------------------------\n");
+            Console.WriteLine("----------------------------------");
 
             // Valörer...
+            if ((växelTillbaka / 500) > 0)
             {
-                if ((växelTillbaka / 500) <= 0) { }
-                else
-                {
-                    Console.WriteLine("\n500-lappar: {0, 5}", (växelTillbaka / 500));
-                }
-                if (((växelTillbaka % 500) / 100) <= 0) { }
-                else
-                {
-                    Console.WriteLine("100-lappar: {0, 5}", ((växelTillbaka % 500) / 100));
-                }
-                if (((växelTillbaka % 100) / 50) <= 0) { }
-                else
-                {
-                    Console.WriteLine("50-lappar: {0, 6}", ((växelTillbaka % 100) / 50));
-                }
-                if (((växelTillbaka % 50) / 20) <= 0) { }
-                else
-                {
-                    Console.WriteLine("20-lappar: {0, 6}", ((växelTillbaka % 50) / 20));
-                } 
-                if ((((växelTillbaka % 50) % 20) / 10) <= 0) { }
-                else
-                {
-                    Console.WriteLine("10-kronor: {0, 6}", (((växelTillbaka % 50) % 20) / 10));
-                } 
-                if (((växelTillbaka % 10) / 5) <= 0) { }
-                else
-                {
-                    Console.WriteLine("5-kronor: {0, 7}", ((växelTillbaka % 10) / 5));
-                } 
-                if (((växelTillbaka % 5) / 1) <= 0) { }
-                else
-                {
-                    Console.WriteLine("1-kronor: {0, 7}\n", ((växelTillbaka % 5) / 1));
-                }
+                Console.WriteLine("\n500-lappar: {0, 5}", (växelTillbaka / 500));
             }
-               
+            if (((växelTillbaka % 500) / 100) > 0)
+            {
+                Console.WriteLine("100-lappar: {0, 5}", ((växelTillbaka % 500) / 100));
+            }
+            if (((växelTillbaka % 100) / 50) > 0) 
+            {
+                Console.WriteLine("50-lappar: {0, 6}", ((växelTillbaka % 100) / 50));
+            }
+            if (((växelTillbaka % 50) / 20) > 0) 
+            {
+                Console.WriteLine("20-lappar: {0, 6}", ((växelTillbaka % 50) / 20));
+            }
+            if ((((växelTillbaka % 50) % 20) / 10) > 0) 
+            {
+                Console.WriteLine("10-kronor: {0, 6}", (((växelTillbaka % 50) % 20) / 10));
+            }
+            if (((växelTillbaka % 10) / 5) > 0)
+            {
+                Console.WriteLine("5-kronor: {0, 7}", ((växelTillbaka % 10) / 5));
+            }
+            if (((växelTillbaka % 5) / 1) > 0)
+            {
+                Console.WriteLine("1-kronor: {0, 7}\n", ((växelTillbaka % 5) / 1));
+            }
+
+
             // Tidigare uträkning av valörer.
             //Console.WriteLine("\n500-lappar: {0, 5}", (växelTillbaka / 500));
             //Console.WriteLine("100-lappar: {0, 5}", ((växelTillbaka % 500) / 100));
