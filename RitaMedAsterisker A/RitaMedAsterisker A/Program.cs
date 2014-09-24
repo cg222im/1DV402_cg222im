@@ -48,7 +48,6 @@ namespace RitaMedAsterisker_A
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         break;
                 } 
-
             }
             // Återställer färg på konsol
             Console.ResetColor();
