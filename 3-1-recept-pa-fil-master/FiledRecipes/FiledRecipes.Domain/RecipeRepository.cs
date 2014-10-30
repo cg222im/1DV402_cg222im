@@ -127,5 +127,114 @@ namespace FiledRecipes.Domain
                 handler(this, e);
             }
         }
+
+
+
+       
+        public virtual void Load()
+        {
+            List<IRecipe> recipes = new List<IRecipe>();
+            Recipe recipe = null;
+            RecipeReadStatus status = RecipeReadStatus.Indefinite;
+
+                using (StreamReader sr = new StreamReader(_path))
+                    {
+                        string line = null;
+
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            if (line == null)
+                            {
+                                return;
+                            }
+
+                            if (line == String.Empty)
+                            {
+                                continue;
+                            }
+
+                            else if (line == SectionRecipe)
+                            {
+                                status = RecipeReadStatus.New;
+                            }
+
+                            else if (line == SectionIngredients)
+                            {
+                                status = RecipeReadStatus.Ingredient;
+                            }
+
+                            else if (line == SectionInstructions)
+                            {
+                                status = RecipeReadStatus.Instruction;
+                            }
+
+                            else
+                            {
+                                if (status == RecipeReadStatus.New)
+                                {
+                                   recipe = new Recipe(line);
+                                   recipes.Add(recipe);
+                                }
+
+                                else if (status == RecipeReadStatus.Ingredient)
+                                {
+                                    int ingredientCount = 0;
+                                    string[] ingredientsInLine = line.Split(';');
+                                    foreach (string word in ingredientsInLine)
+                                    {
+                                        ingredientCount++;
+                                    }
+
+                                    if (ingredientCount != 3)
+                                    {
+                                        throw new FileFormatException();
+                                    }
+
+                                    Ingredient ingredients = new Ingredient();
+                                    ingredients.Amount = ingredientsInLine[0];
+                                    ingredients.Measure = ingredientsInLine[0];
+                                    ingredients.Name = ingredientsInLine[0];
+                                    
+                                    recipe.Add(ingredients);
+                                }
+
+                                else if (status == RecipeReadStatus.Instruction)
+                                {
+                                    recipe.Add(line);
+                                }
+
+                                else
+                                {
+                                    throw new FileFormatException();
+                                }
+                            }  
+                        } 
+                    }
+                
+                recipes.Sort();
+                //_recipes = recipes.OrderBy(recip => recip.Name).ToList();
+                _recipes = recipes; 
+
+                IsModified = false;
+                OnRecipesChanged(EventArgs.Empty);           
+        }
+
+     
+        public virtual void Save()
+        {
+            using (StreamWriter sw = new StreamWriter(_path))
+            {
+                //foreach (Recipe line in recipe)
+                //{
+                ////    sw.WriteLine();
+                ////    // ?? 
+                ////    // ??
+                //}
+
+            }
+            
+            IsModified = false;
+            OnRecipesChanged(EventArgs.Empty);
+        }
     }
 }
