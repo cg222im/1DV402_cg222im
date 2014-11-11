@@ -14,27 +14,27 @@ namespace FiledRecipes.Views
     {
         public void Show(IRecipe recipe)
         {
+            int instructionNumber = 1;
+            Console.Clear();
+
             Header = recipe.Name;
             ShowHeaderPanel();
 
-            //skriva ut ingredients
-            //skriva ut instructions
+            Console.WriteLine("\nIngredienser");
+            Console.WriteLine("=============");
+            foreach (var ingredient in recipe.Ingredients)
+            {
+                Console.WriteLine(ingredient);
+            }
 
-
-            //foreach (Recipe ingredient in recipe.Ingredients)
-            //{
-            //    Console.WriteLine(recipe.Ingredients);
-
-            //}
-
-            //Console.WriteLine(recipe.Ingredients);
-            //Console.WriteLine(recipe.Instructions);
-
-            //Panel = recipe.Ingredients;
-            //ShowPanel();
-            
-            //skriva ut i rätt format, hur skriva ut innehåll objekt?
-            
+            Console.WriteLine("\nInstruktioner");
+            Console.WriteLine("=============");
+            foreach (var instruction in recipe.Instructions)
+            {
+                Console.WriteLine("<{0}>", instructionNumber);
+                instructionNumber++;
+                Console.WriteLine(instruction);
+            }
         }
 
         public void Show(IEnumerable<IRecipe> recipes)
@@ -44,8 +44,6 @@ namespace FiledRecipes.Views
                 Show(recipe);
                 ContinueOnKeyPressed();
             }
-            
-            
         }
     }
 }

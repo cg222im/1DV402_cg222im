@@ -192,8 +192,8 @@ namespace FiledRecipes.Domain
 
                                     Ingredient ingredients = new Ingredient();
                                     ingredients.Amount = ingredientsInLine[0];
-                                    ingredients.Measure = ingredientsInLine[0];
-                                    ingredients.Name = ingredientsInLine[0];
+                                    ingredients.Measure = ingredientsInLine[1];
+                                    ingredients.Name = ingredientsInLine[2];
                                     
                                     recipe.Add(ingredients);
                                 }
@@ -219,21 +219,37 @@ namespace FiledRecipes.Domain
                 OnRecipesChanged(EventArgs.Empty);           
         }
 
-     
+
         public virtual void Save()
         {
             using (StreamWriter sw = new StreamWriter(_path))
             {
-                //foreach (Recipe line in recipe)
-                //{
-                ////    sw.WriteLine();
-                ////    // ?? 
-                ////    // ??
-                //}
+                foreach (Recipe recipe in _recipes)
+                {
+                    sw.WriteLine("[Recept]");
+                    sw.WriteLine(recipe.Name);
 
+                    sw.WriteLine("[Ingredienser]");
+                    foreach (var ingredient in recipe.Ingredients)
+                    {
+                        sw.Write(ingredient.Amount);
+                        sw.Write(";");
+
+                        sw.Write(ingredient.Measure);
+                        sw.Write(";");
+
+                        sw.Write(ingredient.Name + "\n");
+                    }
+
+                    sw.WriteLine("[Instruktioner]");
+                    foreach (var instruction in recipe.Instructions)
+                    {
+                        sw.WriteLine(instruction);
+                    }
+                }
             }
             
-            IsModified = false;
+            IsModified = true;
             OnRecipesChanged(EventArgs.Empty);
         }
     }
