@@ -249,7 +249,7 @@ namespace FiledRecipes.Domain
                 }
             }
             
-            IsModified = true;
+            IsModified = false;
             OnRecipesChanged(EventArgs.Empty);
         }
     }
