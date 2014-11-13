@@ -22,14 +22,14 @@ namespace FiledRecipes.Views
 
             Console.WriteLine("\nIngredienser");
             Console.WriteLine("=============");
-            foreach (var ingredient in recipe.Ingredients)
+            foreach (IIngredient ingredient in recipe.Ingredients)
             {
                 Console.WriteLine(ingredient);
             }
 
             Console.WriteLine("\nInstruktioner");
             Console.WriteLine("=============");
-            foreach (var instruction in recipe.Instructions)
+            foreach (string instruction in recipe.Instructions)
             {
                 Console.WriteLine("<{0}>", instructionNumber);
                 instructionNumber++;
@@ -39,7 +39,7 @@ namespace FiledRecipes.Views
 
         public void Show(IEnumerable<IRecipe> recipes)
         {
-            foreach (Recipe recipe in recipes)
+            foreach (IRecipe recipe in recipes)
             {
                 Show(recipe);
                 ContinueOnKeyPressed();

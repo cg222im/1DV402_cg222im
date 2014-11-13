@@ -194,7 +194,7 @@ namespace FiledRecipes.Domain
                                     ingredients.Amount = ingredientsInLine[0];
                                     ingredients.Measure = ingredientsInLine[1];
                                     ingredients.Name = ingredientsInLine[2];
-                                    
+
                                     recipe.Add(ingredients);
                                 }
 
